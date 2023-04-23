@@ -124,45 +124,29 @@ public class GamePanel extends JPanel {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         for (Hero hero : heroes) {
-            if (hero.isGoingRight()) {
-                g.drawImage(
-                        hero.getBaseImage(),
-                        hero.getX() * Constants.HERO_IMG_WIDTH,
-                        hero.getY() * Constants.HERO_IMG_HEIGHT,
-                        Constants.HERO_IMG_WIDTH,
-                        Constants.HERO_IMG_HEIGHT,
-                        this);
-            } else {
-                g.drawImage(
-                        hero.getBaseImage(),
-                        hero.getX() * Constants.HERO_IMG_WIDTH + Constants.HERO_IMG_WIDTH,
-                        hero.getY() * Constants.HERO_IMG_HEIGHT,
-                        -Constants.HERO_IMG_WIDTH,
-                        Constants.HERO_IMG_HEIGHT,
-                        this);
-            }
+            int width = Constants.HERO_IMG_WIDTH * (hero.isGoingRight() ? 1 : -1);
+            int newX = (hero.getX() * Constants.HERO_IMG_WIDTH) + (hero.isGoingRight() ? 0 : Constants.HERO_IMG_WIDTH );
+            g.drawImage(
+                    hero.getBaseImage(),
+                    newX,
+                    hero.getY() * Constants.HERO_IMG_HEIGHT,
+                    width,
+                    Constants.HERO_IMG_HEIGHT,
+                    this);
             g.drawString(hero.getStringHp(),hero.getX() * Constants.HERO_IMG_WIDTH, hero.getY() * Constants.HERO_IMG_HEIGHT + 15);
 
         }
         for (Monster monster : monsters) {
-            if (monster.isGoingRight()) {
-                g.drawImage(
-                        monster.getBaseImage(),
-                        monster.getX() * Constants.HERO_IMG_WIDTH,
-                        monster.getY() * Constants.HERO_IMG_HEIGHT,
-                        Constants.HERO_IMG_WIDTH,
-                        Constants.HERO_IMG_HEIGHT,
-                        this);
-            } else {
-                g.drawImage(
-                        monster.getBaseImage(),
-                        monster.getX() * Constants.HERO_IMG_WIDTH + Constants.HERO_IMG_WIDTH,
-                        monster.getY() * Constants.HERO_IMG_HEIGHT,
-                        -Constants.HERO_IMG_WIDTH,
-                        Constants.HERO_IMG_HEIGHT,
-                        this);
-            }
-            g.drawString(monster.getStringHp(), monster.getX() * Constants.HERO_IMG_WIDTH, monster.getY() * Constants.HERO_IMG_HEIGHT + 15);
+            int width = Constants.HERO_IMG_WIDTH * (monster.isGoingRight() ? 1 : -1);
+            int newX = (monster.getX() * Constants.HERO_IMG_WIDTH) + (monster.isGoingRight() ? 0 : Constants.HERO_IMG_WIDTH );
+            g.drawImage(
+                    monster.getBaseImage(),
+                    newX,
+                    monster.getY() * Constants.HERO_IMG_HEIGHT,
+                    width,
+                    Constants.HERO_IMG_HEIGHT,
+                    this);
+            g.drawString(monster.getStringHp(),monster.getX() * Constants.HERO_IMG_WIDTH, monster.getY() * Constants.HERO_IMG_HEIGHT + 15);
         }
 
     }
