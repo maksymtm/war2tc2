@@ -106,6 +106,29 @@ public class GamePanel extends JPanel {
                     heroes[activeHeroId - 1].tryGoDown();
                     //heroes[activeHeroId - 1].setY(heroes[activeHeroId - 1].getY() + 1);
                 }
+                if (key == KeyEvent.VK_SPACE) {
+                    Hero activeHero = heroes[activeHeroId - 1];
+                    HashMap<String, GameEntity> attackedEntities = Utils.getAttackedEntities(activeHero, monsters, heroes);
+                    int attackType = activeHero.attack(attackedEntities);
+                    if (attackType > 0) {
+                        Image img = new ImageIcon(
+                                String.format("static/img/warrior/%d.png", attackType))
+                                .getImage();
+                        activeHero.setGoingRight(false);
+                        activeHero.setBaseImage(img);
+
+                        TimerTask attackTask = new TimerTask() {
+                            @Override
+                            public void run() {
+                                activeHero.setDefaultImage();
+                                repaint();
+                            }
+                        };
+                        Timer attackTimer = new Timer();
+                        t1.schedule(attackTask, 200);
+                    }
+
+                }
                 GameEntity.printOccupiedCells();
                 repaint();
 

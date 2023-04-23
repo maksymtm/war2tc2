@@ -3,6 +3,8 @@ package wisniowa.tc.classes.entities.heroes;
 import wisniowa.tc.classes.entities.GameEntity;
 import wisniowa.tc.weapons.Weapon;
 
+import java.util.HashMap;
+
 public abstract class Hero extends GameEntity {
     //x,y,baseImage _> po Entity!!!
     private Weapon rightHandWeapon;
@@ -34,6 +36,7 @@ public abstract class Hero extends GameEntity {
     public void tryGoDown() {
         tryChangePosition(getX(), getY() + 1);
     }
+
     public void tryChangePosition(int newX, int newY) {
         try {
             if (getOccupiedCells()[newY][newX] == 0) {
@@ -44,4 +47,8 @@ public abstract class Hero extends GameEntity {
             }
         } catch (ArrayIndexOutOfBoundsException e) {}
     }
+
+    public abstract int attack(HashMap<String, GameEntity> attackedEntities);
+
+    public abstract void setDefaultImage();
 }

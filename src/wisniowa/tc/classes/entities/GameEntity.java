@@ -10,11 +10,19 @@ public abstract class GameEntity {
                     [Constants.WINDOW_HEIGHT / Constants.HERO_IMG_HEIGHT]
                     [Constants.WINDOW_WIDTH / Constants.HERO_IMG_WIDTH];
     private int x, y, hp;
-    protected int maxHP;
+    protected int maxHP, damage = 100, armor = 10;
     private Image baseImage, goLeftImage, goRightImage;
     private static int entitiesCounter = 0;
     private int id;
     private boolean goingRight = true;
+
+    public int getDamage() {
+        return damage;
+    }
+
+    public int getArmor() {
+        return armor;
+    }
 
     public boolean isGoingRight() {
         return goingRight;
