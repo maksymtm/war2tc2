@@ -1,10 +1,8 @@
 package wisniowa.tc.classes.entities.heroes;
 
-import wisniowa.tc.Interfaces.IDrawableObject;
-
 import javax.swing.*;
 
-public class Archer extends Hero  implements IDrawableObject {
+public class Archer extends Hero {
     //weapon, weapon, name
 
     public Archer(String name, int x, int y) {
