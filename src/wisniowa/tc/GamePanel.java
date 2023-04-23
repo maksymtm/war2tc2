@@ -125,7 +125,8 @@ public class GamePanel extends JPanel {
                             }
                         };
                         Timer attackTimer = new Timer();
-                        t1.schedule(attackTask, 200);
+                        attackTimer.schedule(attackTask, 200);
+
                     }
 
                 }
