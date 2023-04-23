@@ -12,13 +12,18 @@ public abstract class Monster extends GameEntity {
 
     public Monster(int x, int y, byte angryLevel) {
         super(x, y);
+        this.maxHP = 1000;
+        setHp(new Random().nextInt(700) + 100);
         this.angryLevel = angryLevel;
-
+        this.setGoingRight(new Random().nextBoolean());
     }
 
     public Monster() {
         super();
         Random rnd = new Random();
+        this.setGoingRight(new Random().nextBoolean());
+        this.maxHP = 1000;
+        setHp(rnd.nextInt(700) + 100);
         this.angryLevel = (byte)rnd.nextInt(10);
 
         int newY;

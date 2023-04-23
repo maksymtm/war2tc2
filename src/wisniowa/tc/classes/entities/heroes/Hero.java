@@ -8,15 +8,7 @@ public abstract class Hero extends GameEntity {
     private Weapon rightHandWeapon;
     private Weapon leftHandWeapon;
     private String name;
-    private boolean goingRight = true;
 
-    public boolean isGoingRight() {
-        return goingRight;
-    }
-
-    public void setGoingRight(boolean goingRight) {
-        this.goingRight = goingRight;
-    }
 
     public Hero(String name, int x, int y) {
         super(x, y);

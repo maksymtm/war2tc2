@@ -7,6 +7,8 @@ public class Warrior extends Hero {
 
     public Warrior(String name, int x, int y) {
         super(name, x ,y);
+        this.maxHP = 1000;
+        setHp(1000);
         setBaseImage(
                 new ImageIcon(
                         "static/img/warrior/base.png")

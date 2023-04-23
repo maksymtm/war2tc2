@@ -10,9 +10,19 @@ public abstract class GameEntity {
                     [Constants.WINDOW_HEIGHT / Constants.HERO_IMG_HEIGHT]
                     [Constants.WINDOW_WIDTH / Constants.HERO_IMG_WIDTH];
     private int x, y, hp;
+    protected int maxHP;
     private Image baseImage, goLeftImage, goRightImage;
     private static int entitiesCounter = 0;
     private int id;
+    private boolean goingRight = true;
+
+    public boolean isGoingRight() {
+        return goingRight;
+    }
+
+    public void setGoingRight(boolean goingRight) {
+        this.goingRight = goingRight;
+    }
 
 
     public static int[][] getOccupiedCells() {
@@ -51,6 +61,20 @@ public abstract class GameEntity {
 
     public int getHp() {
         return hp;
+    }
+
+    public void setHp(int hp) {
+        if (hp < 0) {
+            this.hp = 0;
+        } else if (hp > this.maxHP) {
+            this.hp = this.maxHP;
+        } else {
+            this.hp = hp;
+        }
+    }
+
+    public String getStringHp() {
+        return Integer.toString(hp);
     }
 
     public Image getBaseImage() {

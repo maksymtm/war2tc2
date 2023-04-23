@@ -141,16 +141,28 @@ public class GamePanel extends JPanel {
                         Constants.HERO_IMG_HEIGHT,
                         this);
             }
+            g.drawString(hero.getStringHp(),hero.getX() * Constants.HERO_IMG_WIDTH, hero.getY() * Constants.HERO_IMG_HEIGHT + 15);
 
         }
         for (Monster monster : monsters) {
-            g.drawImage(
-                    monster.getBaseImage(),
-                    monster.getX() * Constants.HERO_IMG_WIDTH,
-                    monster.getY() * Constants.HERO_IMG_HEIGHT,
-                    Constants.HERO_IMG_WIDTH,
-                    Constants.HERO_IMG_HEIGHT,
-                    this);
+            if (monster.isGoingRight()) {
+                g.drawImage(
+                        monster.getBaseImage(),
+                        monster.getX() * Constants.HERO_IMG_WIDTH,
+                        monster.getY() * Constants.HERO_IMG_HEIGHT,
+                        Constants.HERO_IMG_WIDTH,
+                        Constants.HERO_IMG_HEIGHT,
+                        this);
+            } else {
+                g.drawImage(
+                        monster.getBaseImage(),
+                        monster.getX() * Constants.HERO_IMG_WIDTH + Constants.HERO_IMG_WIDTH,
+                        monster.getY() * Constants.HERO_IMG_HEIGHT,
+                        -Constants.HERO_IMG_WIDTH,
+                        Constants.HERO_IMG_HEIGHT,
+                        this);
+            }
+            g.drawString(monster.getStringHp(), monster.getX() * Constants.HERO_IMG_WIDTH, monster.getY() * Constants.HERO_IMG_HEIGHT + 15);
         }
 
     }
