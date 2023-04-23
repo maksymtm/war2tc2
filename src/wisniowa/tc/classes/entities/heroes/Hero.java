@@ -1,5 +1,6 @@
 package wisniowa.tc.classes.entities.heroes;
 
+import wisniowa.tc.Interfaces.IDrawableObject;
 import wisniowa.tc.classes.entities.GameEntity;
 import wisniowa.tc.weapons.Weapon;
 
